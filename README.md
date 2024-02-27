@@ -17,16 +17,16 @@ sudo docker run -it \
 	strace /bin/sh
 ```
 # Test strace with netcat
-* In http-server-container 
+## In http-server-container 
 ```
 sudo docker exec -it httpd /bin/bash
 cd /home; ./ncLoop.sh
 ```
-* In strace-container
+## In strace-container
 ```
 strace -p <PID of NC> # PID of NC will be found in the previous command
 ```
-* In host
+## In host
 ```
 nc -z -v 127.0.0.1 1234
 ```
