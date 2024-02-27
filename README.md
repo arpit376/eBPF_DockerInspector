@@ -1,8 +1,12 @@
 # Launch http-server
 ```
-sudo docker-compose -f docker-compose-httpd.yml up -d my-apache-app
+sudo sudo docker-compose -f docker-compose-httpd.yml up -d
 ```
 # Launch strace
+```
+sudo docker-compose -f docker-compose-strace.yml up
+```
+or 
 ```
 sudo docker run -it \
 	--name strace \
@@ -11,4 +15,11 @@ sudo docker run -it \
 	--cap-add sys_admin \
 	--cap-add sys_ptrace \
 	strace /bin/sh
+```
+
+
+# Cleanup
+```
+sudo docker-compose -f docker-compose-strace.yml down
+sudo docker-compose -f docker-compose-httpd.yml down
 ```

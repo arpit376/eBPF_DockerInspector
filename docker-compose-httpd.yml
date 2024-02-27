@@ -1,8 +1,10 @@
 version: '3'
 services:
-  my-apache-app:
-    image: httpd:2.4
-    container_name: my-apache-app
+  httpd:
+    build:
+      context: .
+      dockerfile: Dockerfile.httpd
+    container_name: httpd
     ports:
       - "8080:80"
     volumes:
