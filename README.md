@@ -35,7 +35,7 @@ nc -z -v 127.0.0.1 1234
 ## In strace-container
 Here httpd generates child worker processes. The worker processes have user as "xfs". So, the corresponding trace commands would be as follows.
 ```
-strace -e trace=network $(for pid in $(pgrep -u "xfs"); do echo -n " -fp $pid"; done) -fp 1
+strace -t -e trace=network $(for pid in $(pgrep -u "xfs"); do echo -n " -fp $pid"; done) -fp 1
 ```
 ## In host
 ```
