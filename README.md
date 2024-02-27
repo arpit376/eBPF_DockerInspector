@@ -48,13 +48,12 @@ lynx http://localhost:8080
 # Auxiliary Notes
 
 ```
-strace -p 1 -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write
-```
+strace -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write $(for pid in $(pgrep -u "xfs"); do echo -n " -fp $pid"; done) -fp 1
+
 strace -p 1 \
     -e trace=socket,connect,bind,listen,accept,accept4,send,sendto,sendmsg,recv,recvfrom,recvmsg,getsockopt,setsockopt
 
 
-```
 strace -p 1 \
     -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write \
     -e success=successful \
