@@ -16,11 +16,37 @@ sudo docker run -it \
 	--cap-add sys_ptrace \
 	strace /bin/sh
 ```
+# Test strace with netcat
+* In http-server-container 
+```
+sudo docker exec -it httpd /bin/bash
+cd /home; ./ncLoop.sh
+```
+* In strace-container
+```
+strace -p <PID of NC> # PID of NC will be found in the previous command
+```
+* In host
+```
+nc -z -v 127.0.0.1 1234
+```
 
 # Launch strace utility
 ```
 strace -p 1 -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write
 ```
+strace -p 1 \
+    -e trace=socket,connect,bind,listen,accept,accept4,send,sendto,sendmsg,recv,recvfrom,recvmsg,getsockopt,setsockopt
+
+
+```
+strace -p 1 \
+    -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write \
+    -e success=successful \
+    -e execve="/usr/local/apache2/bin/httpd"
+
+```
+
 Equivalent audit 
 
 ```
