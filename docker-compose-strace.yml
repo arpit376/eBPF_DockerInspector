@@ -8,6 +8,8 @@ services:
     cap_add:
       - SYS_ADMIN
       - SYS_PTRACE
+    network_mode: "container:httpd"
+    pid: "container:httpd"
     privileged: true
     stdin_open: true
     tty: true
