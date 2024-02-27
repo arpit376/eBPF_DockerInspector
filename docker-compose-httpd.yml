@@ -8,22 +8,3 @@ services:
     volumes:
       - "./test-page:/usr/local/apache2/htdocs/"
     restart: always
-########################################################
-  strace:
-    build:
-      context: .
-      dockerfile: Dockerfile.strace
-    container_name: strace
-    command: ["strace", "-p", "1"]
-    depends_on:
-      - my-apache-app
-    restart: unless-stopped
-    network_mode: "container:my-apache-app"
-    pid: "container:my-apache-app"
-    cap_add:
-      - SYS_ADMIN
-      - SYS_PTRACE
-    privileged: true
-    stdin_open: true  # Open stdin
-    tty: true         # Allocate a pseudo-TTY
-########################################################

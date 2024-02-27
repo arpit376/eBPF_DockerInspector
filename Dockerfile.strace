@@ -1,4 +1,4 @@
 FROM alpine
 RUN apk update && apk add strace
-#CMD ["strace", "-p", "1"]
-CMD ["/bin/bash"]
+CMD ["strace", "-p", "1"]
+#CMD ["/bin/bash"]

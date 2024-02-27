@@ -1,0 +1,15 @@
+version: '3'
+services:
+  strace:
+    build:
+      context: .
+      dockerfile: Dockerfile.strace
+    container_name: strace
+    cap_add:
+      - SYS_ADMIN
+      - SYS_PTRACE
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: ["/bin/sh"]
+########################################################
