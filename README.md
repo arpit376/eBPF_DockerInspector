@@ -31,7 +31,22 @@ strace -p <PID of NC> # PID of NC will be found in the previous command
 nc -z -v 127.0.0.1 1234
 ```
 
-# Launch strace utility
+# Test strace with httpd
+## In strace-container
+Here httpd generates child worker processes. The worker processes have user as "xfs". So, the corresponding trace commands would be as follows.
+```
+strace -e trace=network $(for pid in $(pgrep -u "xfs"); do echo -n " -fp $pid"; done) -fp 1
+```
+## In host
+```
+wget -O /dev/null http://127.0.0.1:8080
+```
+or
+```
+lynx http://localhost:8080
+```
+# Auxiliary Notes
+
 ```
 strace -p 1 -e trace=bind,connect,accept,accept4,clone,close,creat,dup,dup2,dup3,execve,exit,exit_group,fork,open,openat,rename,renameat,unlink,unlinkat,vfork,read,write
 ```
