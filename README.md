@@ -1,6 +1,6 @@
 # Launch http-server-container
 ```
-sudo sudo docker-compose -f docker-compose-httpd.yml up -d
+sudo docker-compose -f docker-compose-httpd.yml up -d
 ```
 # Launch strace-container
 ```
