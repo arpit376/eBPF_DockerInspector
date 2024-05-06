@@ -84,6 +84,45 @@ Equivalent audit
 ```
 auditctl -a always,exit -F arch=b64 -S bind -S connect -S accept -S accept4 -S clone -S close -S creat -S dup -S dup2 -S dup3 -S execve -S exit -S exit_group -S fork -S open -S openat -S rename -S renameat -S unlink -S unlinkat -S vfork -S read -S write -F success=1 -F exe='/usr/local/apache2/bin/httpd'
 ```
+
+# Capture Packets
+## Find target interface
+### Check the IP of the container
+```
+sudo docker inspect httpd -f "{{json .NetworkSettings.Networks }}"
+```
+OUTPUT: 
+```
+{
+  "ebpf_dockerinspector_default": {
+    "IPAMConfig": null,
+    "Links": null,
+    "Aliases": [
+      "httpd",
+      "httpd",
+      "8e5bbcc39cf7"
+    ],
+    "NetworkID": "da9be232d51ee028f4e0173069f2aba6e2be34e1e89f07146da5430be6169ee2",
+    "EndpointID": "310a6f4e13eda093a78b23db9283e6835f66376a159595effbbcae192d22447f",
+    "Gateway": "172.18.0.1",
+    "IPAddress": "172.18.0.2",
+    "IPPrefixLen": 16,
+    "IPv6Gateway": "",
+    "GlobalIPv6Address": "",
+    "GlobalIPv6PrefixLen": 0,
+    "MacAddress": "02:42:ac:12:00:02",
+    "DriverOpts": null
+  }
+}
+```
+### Find Gateway IP
+Find **"Gateway": "<IP>"** (e.g. `"Gateway": "172.18.0.1"`)
+### Find interface name
+```
+netstat -ie | grep -B1 "<IP>"
+```
+
+
 # Cleanup
 ```
 sudo docker-compose -f docker-compose-strace.yml down
