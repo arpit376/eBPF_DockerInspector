@@ -116,12 +116,17 @@ OUTPUT:
 }
 ```
 ### Find Gateway IP
-Find **"Gateway": "<IP>"** (e.g. `"Gateway": "172.18.0.1"`)
+Find **"Gateway": " < IP > "** (e.g. `"Gateway": "172.18.0.1"`)
 ### Find interface name
 ```
 netstat -ie | grep -B1 "<IP>"
 ```
-
+## Capture packets with `tcpdump`
+```
+sudo tcpdump -i br-da9be232d51e -w httpd_docker.pcap
+```
+Stop packet cpature with `[CTRL+c]`
+## Check the capture files with `wireshark`
 
 # Cleanup
 ```
