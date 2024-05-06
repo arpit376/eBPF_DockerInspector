@@ -14,15 +14,15 @@ sudo docker-compose -f docker-compose-httpd.yml up -d
 ```
 or
 ```
-sudo docker compose -f docker-compose-httpd.yml up
+sudo docker compose -f docker-compose-httpd.yml up -d
 ```
 # Launch strace-container
 ```
-sudo docker-compose -f docker-compose-strace.yml up
+sudo docker-compose -f docker-compose-strace.yml up -d
 ```
 or 
 ```
-sudo docker compose -f docker-compose-strace.yml up
+sudo docker compose -f docker-compose-strace.yml up -d
 ```
 or 
 ```
