@@ -7,9 +7,17 @@ sudo docker compose -f docker-compose-strace.yml build
 ```
 sudo docker-compose -f docker-compose-httpd.yml up -d
 ```
+or
+```
+sudo docker compose -f docker-compose-httpd.yml up
+```
 # Launch strace-container
 ```
 sudo docker-compose -f docker-compose-strace.yml up
+```
+or 
+```
+sudo docker compose -f docker-compose-strace.yml up
 ```
 or 
 ```
