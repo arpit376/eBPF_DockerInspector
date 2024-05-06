@@ -18,11 +18,11 @@ sudo docker compose -f docker-compose-httpd.yml up -d
 ```
 # Launch strace-container
 ```
-sudo docker-compose -f docker-compose-strace.yml up -d
+sudo docker-compose -f docker-compose-strace.yml up -d # Not working
 ```
 or 
 ```
-sudo docker compose -f docker-compose-strace.yml up -d
+sudo docker compose -f docker-compose-strace.yml up -d # Not working
 ```
 or 
 ```
