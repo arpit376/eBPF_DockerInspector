@@ -1,3 +1,8 @@
+# Initialize
+```
+sudo docker compose -f docker-compose-httpd.yml build
+sudo docker compose -f docker-compose-strace.yml build
+```
 # Launch http-server-container
 ```
 sudo docker-compose -f docker-compose-httpd.yml up -d
