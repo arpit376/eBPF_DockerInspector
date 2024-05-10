@@ -32,7 +32,7 @@ sudo docker run -it \
 	--net=container:httpd \
 	--cap-add sys_admin \
 	--cap-add sys_ptrace \
-	strace /bin/sh
+	ebpf_dockerinspector-strace /bin/sh
 ```
 # Test strace with netcat
 ## In http-server-container 
